@@ -1,0 +1,22 @@
+services:
+  test.api:
+    container_name: lde.test.api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./storage:/src/storage
+    environment:
+      - DATABASE_PATH=/src/storage/storage.db
+    ports:
+      - 8080:8080
+networks:
+  default:
+    driver: bridge
+    internal: false
+    attachable: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/24
+          gateway: 192.168.0.5

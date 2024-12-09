@@ -1,0 +1,10 @@
+swag init --parseDependency --parseInternal --parseDepth 2 -g cmd/app/main.go
+
+It activates swagger
+
+// Success		200		{RespProfile}	RespProfile	"api response"
+// Failure      404   {response.DefaultResponse}  response.DefaultResponse "profile not found"
+// Failure      400   {response.DefaultResponse}  response.DefaultResponse "invalid request"
+
+// Success	200		{object}	response.DefaultResponse
+// Failure	400		{object}	response.DefaultResponse

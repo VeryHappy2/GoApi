@@ -1,0 +1,30 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "This is a testing API",
+		"title": "test API",
+		"contact": {},
+		"license": {},
+		"version": "1"
+	},
+	"host": "localhost",
+	"basePath": "/",
+	"paths": {
+		"profile/add": {
+			"post": {
+				"description": "Retrieve a list of users",
+				"tags": [
+					"Users"
+				]
+			}
+		},
+		"profile/getById": {
+			"post": {
+				"description": "Create a new user",
+				"tags": [
+					"Users"
+				]
+			}
+		}
+	}
+}

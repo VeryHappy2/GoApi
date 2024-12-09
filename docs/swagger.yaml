@@ -1,0 +1,101 @@
+definitions:
+  github.com_VeryHappy2_GoApi_internal_http-server_handlers_profile.Profile:
+    type: object
+  github.com_VeryHappy2_GoApi_internal_http-server_handlers_profile.RespProfile:
+    properties:
+      data:
+        $ref: '#/definitions/github.com_VeryHappy2_GoApi_internal_http-server_handlers_profile.Profile'
+      error:
+        type: string
+      status:
+        example: success
+        type: string
+    type: object
+  internal_http-server_handlers_profile.Profile:
+    type: object
+  internal_http-server_handlers_profile.RespProfile:
+    properties:
+      data:
+        $ref: '#/definitions/internal_http-server_handlers_profile.Profile'
+      error:
+        type: string
+      status:
+        example: success
+        type: string
+    type: object
+  repositories.Profile:
+    properties:
+      id:
+        type: integer
+      last_name:
+        type: string
+      name:
+        type: string
+    type: object
+  response.DefaultResponse:
+    properties:
+      data:
+        type: integer
+      error:
+        type: string
+      status:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /profile/add:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: profile
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/repositories.Profile'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.DefaultResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.DefaultResponse'
+      summary: New
+      tags:
+      - profile
+  /profile/getById/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Getting by an profile.
+      parameters:
+      - description: ID of the profile
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: api response
+          schema:
+            $ref: '#/definitions/internal_http-server_handlers_profile.RespProfile'
+        "400":
+          description: invalid request
+          schema:
+            $ref: '#/definitions/response.DefaultResponse'
+        "404":
+          description: profile not found
+          schema:
+            $ref: '#/definitions/response.DefaultResponse'
+      summary: GetById.
+      tags:
+      - profile
+swagger: "2.0"

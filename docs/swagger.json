@@ -1,0 +1,157 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/profile/add": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "profile"
+                ],
+                "summary": "New",
+                "parameters": [
+                    {
+                        "description": "profile",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/repositories.Profile"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.DefaultResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/response.DefaultResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/profile/getById/{id}": {
+            "post": {
+                "description": "Getting by an profile.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "profile"
+                ],
+                "summary": "GetById.",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID of the profile",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "api response",
+                        "schema": {
+                            "$ref": "#/definitions/internal_http-server_handlers_profile.RespProfile"
+                        }
+                    },
+                    "400": {
+                        "description": "invalid request",
+                        "schema": {
+                            "$ref": "#/definitions/response.DefaultResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "profile not found",
+                        "schema": {
+                            "$ref": "#/definitions/response.DefaultResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "github.com_VeryHappy2_GoApi_internal_http-server_handlers_profile.Profile": {
+            "type": "object"
+        },
+        "github.com_VeryHappy2_GoApi_internal_http-server_handlers_profile.RespProfile": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/github.com_VeryHappy2_GoApi_internal_http-server_handlers_profile.Profile"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "example": "success"
+                }
+            }
+        },
+        "internal_http-server_handlers_profile.Profile": {
+            "type": "object"
+        },
+        "internal_http-server_handlers_profile.RespProfile": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/internal_http-server_handlers_profile.Profile"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "example": "success"
+                }
+            }
+        },
+        "repositories.Profile": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "response.DefaultResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "integer"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
